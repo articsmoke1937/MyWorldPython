@@ -14,7 +14,7 @@ import Programs.weather
 import Programs.stocks
 import Programs.rocks_paper_scissors as rocks_paper_scissors
 import Programs.admin as admin
-
+import tkinter as tk
 
 
 #local variables
@@ -22,6 +22,11 @@ activities = ['1. Norris Jokes', '2. Weather Channel', '3. Review Stocks', '4. R
 userconfirm=1
 cycle=1
 choice=1
+# main_win=tk.Tk() #creating the main window and storing the window object in 'win'
+# main_win.title('Do It All Program') #setting title of the window
+# main_win.geometry('300x100') #setting the size of the window
+# button=tk.Button(main_win,command=program())
+# main_win.mainloop() #running the loop that works as a trigger
 
 
 #============================================
@@ -60,24 +65,25 @@ while True:
     elif choice==2:
         Programs.weather.weather(city)
 
-     #Review Stock data
+    #Review Stock data
     elif choice==3:
         Programs.stocks.stocks_choice(pname)
 
-     #Play Rocks Papers Scissors
+    #Play Rocks Papers Scissors
     elif choice==4:
         rocks_paper_scissors.rocks_paper_scis(globals.cname, pname, choice)
 
     #  #Exit program
     elif choice==5:
-         break
-       # answer='exit'
+        break
+    # answer='exit'
 
-     #Enter Secret admin window
+    #Enter Secret admin window
     elif choice==99:
-       admin.admin_menu(user_id,pname,lname,city,age)
+        admin.admin_menu(user_id,pname,lname,city,age)
 
     # else:
     #     print(pname, "didn't do it right")
     #     Programs.weather.weather(city)
+
 

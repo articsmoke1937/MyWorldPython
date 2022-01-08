@@ -1,4 +1,4 @@
-global cname
+global cname,user_id,new_user_id,pname,lname,city,age
 cname="Atom"
 
 
