@@ -62,7 +62,8 @@ class page_view_controller(Tk):
         self.frame={}
 
         # All windows that need to show will be defined here
-        for F in (user_validation,user_search,user_set_up,start_page):
+
+        for F in (user_validation,user_search,user_set_up,start_page,games,chuck_norris_jokes,rocks_paper_scissors,stocks,regression,classification,sentiment_analysis,nat_lang_proc,ai_network):
             frame = F(container, self)
             self.frame[F] = frame
             frame.grid(row = 0, column = 0, sticky = "nsew") 
@@ -111,24 +112,16 @@ class user_validation(Frame):
         yes_btn = Button(self, text = "Yes", command =lambda:[self.user_been_here_before(),controller.show_frame(start_page)], width = 20, height = 1)     
         yes_btn.pack()
 
-       
-        # no_btn = Button(self, text = "No", command =lambda:controller.frame_show(user_search), width = 20, height = 1)     
-        # no_btn.pack()
-       
-
         no_btn = Button(self, text = "No", command =lambda:controller.show_frame(user_search), width = 20, height = 1)     
         no_btn.pack()
 
         cancel_btn = Button(self, text = "Cancel", command =controller.destroy, width = 20, height = 1)     
         cancel_btn.pack()
  
-
     def user_start_setup_message(self):
         messagebox.showinfo('infromation',f'\nOhhhh, you have never been here before!\nWell, we are going to get you set up!!')
 
     def user_been_here_before(self):
-        # user_profile.user.set_last_user_log(user_id)
-        # user_id,pname,lname,city,age=user_profile.user.get_saved_user_info(globals.user_file,user_id)
         messagebox.showinfo('infromation',f'\nOhhhh, you have been here before {pname}!\nWelcome back!! I hope {city} is treating you well!')
 
 class user_search(Frame):    
@@ -167,7 +160,6 @@ class user_search(Frame):
             self.user_been_here_before(user_id)
             controller.show_frame(start_page)
         elif user_in=='n':
-            print(user_id,'userinn')
             user_profile.user.set_last_user_log(user_id)
             user_validation.user_start_setup_message(self)
             controller.show_frame(user_set_up)
@@ -247,34 +239,297 @@ class user_set_up(Frame):
 # Application Body Frame classes
 ##################################################################
 class start_page(Frame):    
-	print("Greetings8!")
-	def __init__(self, parent, controller):
-		Frame.__init__(self, parent)   
-		label = Label(self, text="Welcome To My World", font = LargeFont)
-		label.pack(pady=10,padx=10)
-		# button1 = Button(self, text = "Chuck Norris Jokes",
-		# 	command = lambda: controller.show_frame(chuck_norris), width = 20, height = 1)     
-		# button2 = Button(self, text = " Stock Program ",
-		# 	command = lambda: controller.show_frame(stock_program), width = 20, height = 1)
-		# button3 = Button(self, text = "Rocks Papers Scissors",
-		# 	command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
-		# button4 = Button(self, text = "Project4",
-		# 	command = lambda: controller.show_frame(Project_4), width = 20, height = 1)
-		# button5 = Button(self, text = "    Project5    ",
-		# 	command = lambda: controller.show_frame(Project_5), width = 20, height = 1)
-		# button6 = Button(self, text = "Projec6    ",
-		# 	command = lambda: controller.show_frame(Project_6), width = 20, height = 1)
-		# button7 = Button(self, text = "Projec7",
-		# 	command = lambda: controller.show_frame(Project_7), width = 20, height = 1)
-		# button1.pack()
-		# button2.pack()
-		# button3.pack()
-		# button4.pack()
-		# button5.pack()
-		# button6.pack()
-		# button7.pack()
 
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+#####################################################
+# GAMES
+#####################################################
+class games(Frame):    
 
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+
+######################################################
+# Chuck Norris Jokes Frame
+#####################################################
+class chuck_norris_jokes(Frame):    
+    print("Greetings8!")
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Chuck Norris Jokes",
+            command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)     
+        button2 = Button(self, text = " Stock Program ",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Rocks Papers Scissors",
+            command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
+#####################################################
+# STOCKS
+#####################################################
+
+######################################################
+# STOCK PROGRAM FRAME
+#####################################################
+class stocks(Frame):    
+    print("Greetings8!")
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Chuck Norris Jokes",
+            command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)     
+        button2 = Button(self, text = " Stock Program ",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Rocks Papers Scissors",
+            command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
+######################################################
+# ROCKS PAPER SCISSORS APPLICATION FRAME
+#####################################################
+class rocks_paper_scissors(Frame):    
+    print("Greetings8!")
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Chuck Norris Jokes",
+            command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)     
+        button2 = Button(self, text = " Stock Program ",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Rocks Papers Scissors",
+            command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
+#####################################################
+# REGRESSION
+#####################################################
+class regression(Frame):    
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+#####################################################
+# CLASSIFICATIONS 
+#####################################################
+class classification(Frame):    
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+
+#####################################################
+# SENTIMENT ANALYSIS
+#####################################################
+class sentiment_analysis(Frame):    
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+#####################################################
+# NATURAL LANGUAGE PROCESSING
+#####################################################
+class nat_lang_proc(Frame):    
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
+
+#####################################################
+# AI NEURAL NETWORK
+#####################################################
+class ai_network(Frame):    
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)   
+        label = Label(self, text="Welcome To My World", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Games",
+            command = lambda: controller.show_frame(games), width = 20, height = 1)     
+        button2 = Button(self, text = "Stock Market",
+            command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+        button3 = Button(self, text = "Regression Project",
+            command = lambda: controller.show_frame(regression), width = 20, height = 1)
+        button4 = Button(self, text = "Classification Project",
+            command = lambda: controller.show_frame(classification), width = 20, height = 1)
+        button5 = Button(self, text = "Sentiment Analysis",
+            command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+        button6 = Button(self, text = "Natural Language Processing",
+            command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+        button7 = Button(self, text = "Artificial Neural Networks",
+            command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+        button8 = Button(self, text = "Back to Main Menu",
+            command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+        button4.pack()
+        button5.pack()
+        button6.pack()
+        button7.pack()
+        button8.pack()
         # class user_not_recognized:
 #     def __init__(self,master):
 #         self.master=master
