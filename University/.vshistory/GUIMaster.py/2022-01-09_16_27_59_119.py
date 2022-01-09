@@ -13,7 +13,6 @@ from University import globals as globals
 from tkinter import messagebox
 # from tkinter.ttk import *
 import json
-import requests 
 
 LargeFont=("Verdana",16)
 
@@ -342,27 +341,18 @@ class games_frame(Frame):
 # Chuck Norris Jokes Frame
 #####################################################
 class chuck_norris_jokes(Frame):
- 
-   #Initialize frame.  I will call directly to the website from here istead of a separate class
- def __init__(self, parent, controller):
+  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
+
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.pack(pady=10,padx=10)
-    
     joke_menu_url = "https://api.chucknorris.io/jokes/categories"
-    request=requests.get(joke_menu_url)
-    joke_menu=request.json()
-    
-    button=[]
-    for x in range(len(joke_menu)):
-        t=joke_menu[x]
-        b=Button(self, text=t, comman = lambda x = x: boardWindow(x))
-        b.pack()
-        button.append(b)
-        #def action(button=x):
-        #    return button_dict[x)
-        #button_dict[x]=Button(self, text = x, command=action)
-        #button_dict[x].pack()
+
+    for x in range(len(joke_menu_url)):
+        def action(button=x):
+            return button_dict(x)
+        button_dict[x]=Button(self, text = x, command=action)
+        button_dict[x].pack()
 
     button1 = Button(self, text = "Click Here to hear some Chuck Norris Jokes",
     command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1) 

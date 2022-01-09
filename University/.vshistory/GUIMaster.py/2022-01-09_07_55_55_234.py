@@ -8,12 +8,11 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-## import Programs.games as game
-## import University.games as games_play
+
+import University.games as games_play
 from tkinter import messagebox
 # from tkinter.ttk import *
 import json
-import requests 
 
 LargeFont=("Verdana",16)
 
@@ -327,45 +326,32 @@ class games_frame(Frame):
         button2.pack()
         button3.pack()
 
-    #def get_chuck_joke_single(self,controller):
-    #    chuck_joke_single=games_play.chuck_jokes.joke_single_get()
-    #    print(chuck_joke_single)
+        chuck_joke_single=[]
+        chuck_joke_menu=[]
+
+
+    def get_chuck_joke_single(self,controller):
+        chuck_joke_single=games_play.chuck_jokes.joke_single_get()
+        print(chuck_joke_single)
 
     
-    #def get_chuck_menu(self,controller):
-    #    chuck_joke_menu=games_play.chuck_jokes.joke_menu_get()
-    #    print(chuck_joke_menu)
+    def get_chuck_menu(self,controller):
+        chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
+        print(chuck_joke_menu)
 
 
 
 ######################################################
 # Chuck Norris Jokes Frame
 #####################################################
-class chuck_norris_jokes(Frame):
- 
-   #Initialize frame.  I will call directly to the website from here istead of a separate class
- def __init__(self, parent, controller):
-    Frame.__init__(self, parent)
+class chuck_norris_jokes(Frame):  
+
+  def __init__(self, parent, controller):
+    Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.pack(pady=10,padx=10)
-    
-    joke_menu_url = "https://api.chucknorris.io/jokes/categories"
-    request=requests.get(joke_menu_url)
-    joke_menu=request.json()
-    
-    button=[]
-    for x in range(len(joke_menu)):
-        t=joke_menu[x]
-        b=Button(self, text=t, comman = lambda x = x: boardWindow(x))
-        b.pack()
-        button.append(b)
-        #def action(button=x):
-        #    return button_dict[x)
-        #button_dict[x]=Button(self, text = x, command=action)
-        #button_dict[x].pack()
-
     button1 = Button(self, text = "Click Here to hear some Chuck Norris Jokes",
-    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1) 
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
     button2 = Button(self, text = " Stock Program ",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
     button3 = Button(self, text = "Rocks Papers Scissors",
@@ -373,15 +359,7 @@ class chuck_norris_jokes(Frame):
     button1.pack()
     button2.pack()
     button3.pack()
- 
-    def get_chuck_joke_single(self,controller):
-            chuck_joke_single=games_play.chuck_jokes.joke_single_get()
-            print(chuck_joke_single)
-
-    
-    def get_chuck_menu(self,controller):
-            chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
-            print(chuck_joke_menu)  
+   
 #####################################################
 # STOCKS
 #####################################################

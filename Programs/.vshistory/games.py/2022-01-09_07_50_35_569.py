@@ -2,20 +2,20 @@ import requests
 import University.globals as globals
 
 class chuck_jokes(object):
-    joke_menu_url = "https://api.chucknorris.io/jokes/categories"
-    joke_single_url = "https://api.chucknorris.io/jokes/random"
           
-    def __init__(self):
-   
-        def joke_menu_get():
-            request = requests.get(joke_menu_url)
-            joke_menu = request.json()
-            return joke_menu
+    def __init__(self, joke_menu_url,joke_single_url):
+         joke_menu_url = "https://api.chucknorris.io/jokes/categories"
+         joke_single_url = "https://api.chucknorris.io/jokes/random"
 
-        def joke_single_get():
-            request = requests.get(joke_single_url)
-            joke_single = request.json()
-            return joke_single
+    def joke_menu_get(self):
+        request = requests.get(joke_menu_url)
+        joke_menu = request.json()
+        return joke_menu
+
+    def joke_single_get(self):
+        request = requests.get(joke_single_url)
+        joke_single = request.json()
+        return joke_single
 
         while more_jokes==1:
             num=int(input("How many Norris Jokes would you like to hear? "))

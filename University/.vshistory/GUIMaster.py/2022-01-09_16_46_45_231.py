@@ -342,20 +342,17 @@ class games_frame(Frame):
 # Chuck Norris Jokes Frame
 #####################################################
 class chuck_norris_jokes(Frame):
- 
-   #Initialize frame.  I will call directly to the website from here istead of a separate class
- def __init__(self, parent, controller):
+  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
+
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.pack(pady=10,padx=10)
-    
     joke_menu_url = "https://api.chucknorris.io/jokes/categories"
     request=requests.get(joke_menu_url)
     joke_menu=request.json()
     
-    button=[]
     for x in range(len(joke_menu)):
-        t=joke_menu[x]
+        t=joke_menu_url[x]
         b=Button(self, text=t, comman = lambda x = x: boardWindow(x))
         b.pack()
         button.append(b)

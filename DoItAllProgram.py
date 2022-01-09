@@ -9,7 +9,6 @@ from University.user_profile import user as up
 import University.globals as globals
 import University.validation as val
 import Programs.activity_choice as activity_choice
-import Programs.chucknorris
 import Programs.weather
 import Programs.stocks
 import Programs.rocks_paper_scissors as rocks_paper_scissors

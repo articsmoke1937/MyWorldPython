@@ -44,6 +44,7 @@
     <Compile Include="University\GUIMaster.py" />
     <Compile Include="University\Stocks.py" />
     <Compile Include="University\user_profile.py" />
+    <Compile Include="University\validation.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Programs" />
