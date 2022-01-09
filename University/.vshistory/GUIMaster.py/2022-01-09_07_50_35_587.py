@@ -336,7 +336,7 @@ class games_frame(Frame):
 
     
     def get_chuck_menu(self,controller):
-        chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
+        chuck_joke_menu=games.chuck_jokes.jokes_menu_get()
         print(chuck_joke_menu)
 
 

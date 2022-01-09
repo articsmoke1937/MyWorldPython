@@ -8,8 +8,7 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-
-import University.games as games_play
+import Programs as programs
 from tkinter import messagebox
 # from tkinter.ttk import *
 import json
@@ -312,6 +311,8 @@ class games(Frame):
 #####################################################
 class games_frame(Frame):
 
+    chuck_joke_menu=[]
+
     def __init__(self, parent, controller):
         Frame.__init__(self, parent) 
         label = Label(self, text="Welcome To My World of GAMES!", font = LargeFont)
@@ -325,27 +326,21 @@ class games_frame(Frame):
         button1.pack()
         button2.pack()
         button3.pack()
-
-        chuck_joke_single=[]
-        chuck_joke_menu=[]
-
-
+    
     def get_chuck_joke_single(self,controller):
-        chuck_joke_single=games_play.chuck_jokes.joke_single_get()
+        chuck_joke_single=programs.games.chuck_jokes.joke_single_get()
         print(chuck_joke_single)
-
+        controller.show_frames(chuck_norris_jokes)
     
     def get_chuck_menu(self,controller):
-        chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
+        chuck_joke_menu=games.chuck_jokes.jokes_menu_get()
         print(chuck_joke_menu)
-
-
-
+        controller.show_frames(chuck_norris_jokes)
 ######################################################
 # Chuck Norris Jokes Frame
 #####################################################
-class chuck_norris_jokes(Frame):  
-
+class chuck_norris_jokes(self):  
+  print("Greetings8!")
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)

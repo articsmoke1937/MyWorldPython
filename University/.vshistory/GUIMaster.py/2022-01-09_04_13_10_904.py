@@ -8,8 +8,6 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-
-import University.games as games_play
 from tkinter import messagebox
 # from tkinter.ttk import *
 import json
@@ -126,10 +124,6 @@ class user_validation(Frame):
   def user_been_here_before(self):
     messagebox.showinfo('infromation',f'\nOhhhh, you have been here before {pname}!\nWelcome back!! I hope {city} is treating you well!')
 
-########################################################
-# This frame captures the input of the user's ID and starts
-# a query into their credentials.
-#########################################################
 class user_search(Frame):  
 
   def __init__(self, parent, controller):
@@ -148,9 +142,11 @@ class user_search(Frame):
 
     back_to_main_menu_btn = Button(self, text = "Back to Main Menu",
     command = lambda: controller.show_frame(user_validation), width = 20, height = 1)
-   
+    
+
     submit_btn.pack()
     back_to_main_menu_btn.pack()
+
 
   ###################################
   # Set current user_id to last user logged in
@@ -238,6 +234,7 @@ class user_set_up(Frame):
     user_profile.user.set_last_user_log(new_user_id)
     messagebox.showinfo('infromation',f'\n{pname}, your user information has been saved.\nNow its time to move on to the fun!!')
 
+		# but
 ###################################################################
 # Application Body Frame classes
 ##################################################################
@@ -305,52 +302,16 @@ class games(Frame):
     button7.pack()
     button8.pack()
 
-
-
-######################################################
-# Games Frame
-#####################################################
-class games_frame(Frame):
-
-    def __init__(self, parent, controller):
-        Frame.__init__(self, parent) 
-        label = Label(self, text="Welcome To My World of GAMES!", font = LargeFont)
-        label.pack(pady=10,padx=10)
-        button1 = Button(self, text = "Chuck Norris Jokes",
-        command = lambda:[self.get_chuck_joke_single(controller),self.get_chuck_menu(controller), controller.show_frame(chuck_norris_jokes)], width = 20, height = 1)   
-        button2 = Button(self, text = "Rocks Papers Scissors",
-        command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
-        button3 = Button(self, text = "Return to Main Menu",
-        command = lambda: controller.show_frame(start_page), width = 20, height = 1)
-        button1.pack()
-        button2.pack()
-        button3.pack()
-
-        chuck_joke_single=[]
-        chuck_joke_menu=[]
-
-
-    def get_chuck_joke_single(self,controller):
-        chuck_joke_single=games_play.chuck_jokes.joke_single_get()
-        print(chuck_joke_single)
-
-    
-    def get_chuck_menu(self,controller):
-        chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
-        print(chuck_joke_menu)
-
-
-
 ######################################################
 # Chuck Norris Jokes Frame
 #####################################################
 class chuck_norris_jokes(Frame):  
-
+  print("Greetings8!")
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
+    label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    button1 = Button(self, text = "Click Here to hear some Chuck Norris Jokes",
+    button1 = Button(self, text = "Chuck Norris Jokes",
     command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
     button2 = Button(self, text = " Stock Program ",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
@@ -359,7 +320,7 @@ class chuck_norris_jokes(Frame):
     button1.pack()
     button2.pack()
     button3.pack()
-   
+
 #####################################################
 # STOCKS
 #####################################################
@@ -435,8 +396,6 @@ class regression(Frame):
     button6.pack()
     button7.pack()
     button8.pack()
-
-
 #####################################################
 # CLASSIFICATIONS 
 #####################################################

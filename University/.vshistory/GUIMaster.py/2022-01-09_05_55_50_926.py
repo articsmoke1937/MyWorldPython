@@ -8,8 +8,7 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-
-import University.games as games_play
+from Programs import chucknorris as chuck
 from tkinter import messagebox
 # from tkinter.ttk import *
 import json
@@ -310,42 +309,29 @@ class games(Frame):
 ######################################################
 # Games Frame
 #####################################################
-class games_frame(Frame):
+class games(Frame):  
+    chuck_joke_menu=[]
+def __init__(self, parent, controller):
+    Frame.__init__(self, parent) 
+    label = Label(self, text="Welcome To My World of GAMES!", font = LargeFont)
+    label.pack(pady=10,padx=10)
+    button1 = Button(self, text = "Chuck Norris Jokes",
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
+    button2 = Button(self, text = "Rocks Papers Scissors",
+    command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+    button3 = Button(self, text = "Return to Main Menu",
+    command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+    button1.pack()
+    button2.pack()
+    button3.pack()
 
-    def __init__(self, parent, controller):
-        Frame.__init__(self, parent) 
-        label = Label(self, text="Welcome To My World of GAMES!", font = LargeFont)
-        label.pack(pady=10,padx=10)
-        button1 = Button(self, text = "Chuck Norris Jokes",
-        command = lambda:[self.get_chuck_joke_single(controller),self.get_chuck_menu(controller), controller.show_frame(chuck_norris_jokes)], width = 20, height = 1)   
-        button2 = Button(self, text = "Rocks Papers Scissors",
-        command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
-        button3 = Button(self, text = "Return to Main Menu",
-        command = lambda: controller.show_frame(start_page), width = 20, height = 1)
-        button1.pack()
-        button2.pack()
-        button3.pack()
-
-        chuck_joke_single=[]
-        chuck_joke_menu=[]
-
-
-    def get_chuck_joke_single(self,controller):
-        chuck_joke_single=games_play.chuck_jokes.joke_single_get()
-        print(chuck_joke_single)
-
-    
-    def get_chuck_menu(self,controller):
-        chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
-        print(chuck_joke_menu)
-
-
-
+    chuck_joke_menu=chuck.chuck_jokes.jokes_menu_get()
+    print(chuck_joke_menu)
 ######################################################
 # Chuck Norris Jokes Frame
 #####################################################
 class chuck_norris_jokes(Frame):  
-
+  print("Greetings8!")
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
