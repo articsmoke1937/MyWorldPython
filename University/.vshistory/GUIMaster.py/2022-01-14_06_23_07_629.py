@@ -351,22 +351,22 @@ class rocks_paper_scissors(Frame):
     command = lambda: games_call.rocks_paper_scissors.rps_play_rock(), width = 20, height = 1)   
     
     paper_btn= Button(self, text = "PAPER",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_paper(), width = 20, height = 1)   
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
 
     scissors_btn= Button(self, text = "SCISSORS",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_scissors(), width = 20, height = 1)   
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
 
     games_menu_btn = Button(self, text = "Return to Games Menu",
     command = lambda: controller.show_frame(games), width = 20, height = 2)
-    #games_menu_btn.grid(row=5,column=1)
+    games_menu_btn.grid(row=5,column=1)
     
     main_menu_btn = Button(self, text = "Return to Main Menu",
     command = lambda: controller.show_frame(start_page), width = 20, height = 2)
-    #main_menu_btn.grid(row=5,column=2)
+    main_menu_btn.grid(row=5,column=2)
 
-    rock_btn.pack()
-    paper_btn.pack()
-    scissors_btn.pack()
+    button1.pack()
+    button2.pack()
+    button3.pack()
    
 #####################################################
 # STOCKS

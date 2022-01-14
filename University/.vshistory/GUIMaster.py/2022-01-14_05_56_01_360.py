@@ -9,7 +9,6 @@ from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
 import Programs.games as games_call
-
 ## import University.games as games_play
 from tkinter import messagebox
 # from tkinter.ttk import *
@@ -291,7 +290,7 @@ class games(Frame):
     cn_btn = Button(self, text = "Chuck Norris Jokes",
     command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
     rps_btn = Button(self, text = "Rocks Papers Scissors",
-                         command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+                         command = lambda: controller.show_frame(stocks), width = 20, height = 1)
     menu_return_btn = Button(self, text = "Back to Main Menu",
     command = lambda: controller.show_frame(start_page), width = 20, height = 1)
     
@@ -337,37 +336,7 @@ class chuck_norris_jokes(Frame):
     command = lambda: controller.show_frame(start_page), width = 20, height = 2)
     main_menu_btn.grid(row=len(joke_menu)+1,column=2)
 
-######################################################
-# ROCKS PAPER SCISSORS APPLICATION FRAME
-#####################################################
-class rocks_paper_scissors(Frame):  
-  print("Greetings8!")
-  def __init__(self, parent, controller):
-    Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome To My World", font = LargeFont)
-    label.pack(pady=10,padx=10)
-    
-    rock_btn= Button(self, text = "ROCK",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_rock(), width = 20, height = 1)   
-    
-    paper_btn= Button(self, text = "PAPER",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_paper(), width = 20, height = 1)   
 
-    scissors_btn= Button(self, text = "SCISSORS",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_scissors(), width = 20, height = 1)   
-
-    games_menu_btn = Button(self, text = "Return to Games Menu",
-    command = lambda: controller.show_frame(games), width = 20, height = 2)
-    #games_menu_btn.grid(row=5,column=1)
-    
-    main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 2)
-    #main_menu_btn.grid(row=5,column=2)
-
-    rock_btn.pack()
-    paper_btn.pack()
-    scissors_btn.pack()
-   
 #####################################################
 # STOCKS
 #####################################################
@@ -391,7 +360,24 @@ class stocks(Frame):
     button2.pack()
     button3.pack()
 
-
+######################################################
+# ROCKS PAPER SCISSORS APPLICATION FRAME
+#####################################################
+class rocks_paper_scissors(Frame):  
+  print("Greetings8!")
+  def __init__(self, parent, controller):
+    Frame.__init__(self, parent) 
+    label = Label(self, text="Welcome To My World", font = LargeFont)
+    label.pack(pady=10,padx=10)
+    button1 = Button(self, text = "Chuck Norris Jokes",
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
+    button2 = Button(self, text = " Stock Program ",
+    command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+    button3 = Button(self, text = "Rocks Papers Scissors",
+    command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+    button1.pack()
+    button2.pack()
+    button3.pack()
 
 #####################################################
 # REGRESSION

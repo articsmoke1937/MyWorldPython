@@ -354,7 +354,7 @@ class rocks_paper_scissors(Frame):
     command = lambda: games_call.rocks_paper_scissors.rps_play_paper(), width = 20, height = 1)   
 
     scissors_btn= Button(self, text = "SCISSORS",
-    command = lambda: games_call.rocks_paper_scissors.rps_play_scissors(), width = 20, height = 1)   
+    command = games_call.rocks_paper_scissors.rps_play_scissors(), width = 20, height = 1)   
 
     games_menu_btn = Button(self, text = "Return to Games Menu",
     command = lambda: controller.show_frame(games), width = 20, height = 2)

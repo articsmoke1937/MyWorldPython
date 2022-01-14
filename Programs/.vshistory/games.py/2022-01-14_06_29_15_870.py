@@ -66,7 +66,7 @@ class rocks_paper_scissors(object):
         elif user_choice == 'scissors' and computer_choice == 'paper':
            messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nIchose {computer_choice} so YOU LOSE')
  
     def rps_play_paper():
 
@@ -81,7 +81,7 @@ class rocks_paper_scissors(object):
         elif user_choice == 'scissors' and computer_choice == 'paper':
            messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nIchose {computer_choice} so YOU LOSE')
  
     def rps_play_scissors():
 
@@ -96,5 +96,5 @@ class rocks_paper_scissors(object):
         elif user_choice == 'scissors' and computer_choice == 'paper':
            messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nIchose {computer_choice} so YOU LOSE')
  
