@@ -310,7 +310,7 @@ class chuck_norris_jokes(Frame):
     #Frame attributes
     controller.geometry('800x800')
     controller.title("Chuck's World")
-  #  controller.iconbitmap('images/chucknorris.png)
+    controller.iconbitmap('https://assets.chucknorris.host/img/avatar/chuck-norris.png')
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.grid(row=0,column=2,columnspan=2)
     #label.pack(pady=10,padx=10)

@@ -201,7 +201,7 @@ class user_set_up(Frame):
   
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
-    controller.title("My World Python")  
+    controller.title("Welcome Back Fuckers")  
     label = Label(self, text="User Set Up",font=LargeFont)
     label.pack(pady=10,padx=10)
     greeting_label=Label(self,text=f'Please provide the information requested below',font=MedFont)
@@ -283,21 +283,28 @@ class games(Frame):
   print("Greetings8!")
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome To My World: GAMES", font = LargeFont)
+    label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    
-    #buttons for page
     cn_btn = Button(self, text = "Chuck Norris Jokes",
     command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
     rps_btn = Button(self, text = "Rocks Papers Scissors",
-                         command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+    command = lambda: controller.show_frame(stocks), width = 20, height = 1)
     menu_return_btn = Button(self, text = "Back to Main Menu",
     command = lambda: controller.show_frame(start_page), width = 20, height = 1)
-    
     cn_btn.pack()
     rps_btn.pack()
     menu_return_btn.pack()
+    #def get_chuck_joke_single(self,controller):
+    #    chuck_joke_single=games_play.chuck_jokes.joke_single_get()
+    #    print(chuck_joke_single)
+
     
+    #def get_chuck_menu(self,controller):
+    #    chuck_joke_menu=games_play.chuck_jokes.joke_menu_get()
+    #    print(chuck_joke_menu)
+
+
+
 ######################################################
 # Chuck Norris Jokes Frame
 #####################################################
@@ -306,11 +313,6 @@ class chuck_norris_jokes(Frame):
    #Initialize frame.  I will call directly to the website from here istead of a separate class
  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
-    png=games_call.chuck_jokes.icon_get()
-    #Frame attributes
-    controller.geometry('800x800')
-    controller.title("Chuck's World")
-  #  controller.iconbitmap('images/chucknorris.png)
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.grid(row=0,column=2,columnspan=2)
     #label.pack(pady=10,padx=10)
@@ -318,23 +320,18 @@ class chuck_norris_jokes(Frame):
     #Call to function to get joke menu categories
     joke_menu=games_call.chuck_jokes.joke_menu_get()
     button=[]
-
     #Display buttons on screen for menu, when button is pressed, category is passed and joke displayed
     for x in range(len(joke_menu)):
-
         button_show=Button(self, text=joke_menu[x], command = lambda btn_text=joke_menu[x]:[games_call.chuck_jokes.display_joke(controller,btn_text)
-                                                                                ,controller.show_frame(chuck_norris_jokes)],width = 20, height = 2)
-        #check to see if x is ODD, if so set the column the same as previous column, if not set to column to left
-        button_show.grid(row=games_call.chuck_jokes.btn_layout(x)[0],column=games_call.chuck_jokes.btn_layout(x)[1],columnspan=1)
+                                                                                ,controller.show_frame(chuck_norris_jokes)])
+        button_show.grid(row=x+2,column=x+1)
+        print(x+5)
         button.append(button_show)
-    
-    games_menu_btn = Button(self, text = "Return to Games Menu",
-    command = lambda: controller.show_frame(games), width = 20, height = 2)
-    games_menu_btn.grid(row=len(joke_menu)+1,column=1)
-    
     main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 2)
-    main_menu_btn.grid(row=len(joke_menu)+1,column=2)
+    command = lambda: controller.show_frame(start_page), width = 20, height = 10)
+    #main_menu_btn.pack()
+    #button2.pack()
+    #button3.pack()
 
 
 #####################################################

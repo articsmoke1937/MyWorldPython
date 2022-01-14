@@ -306,11 +306,11 @@ class chuck_norris_jokes(Frame):
    #Initialize frame.  I will call directly to the website from here istead of a separate class
  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
-    png=games_call.chuck_jokes.icon_get()
+
     #Frame attributes
     controller.geometry('800x800')
     controller.title("Chuck's World")
-  #  controller.iconbitmap('images/chucknorris.png)
+    controller.iconbitmap(games_call.chuck_jokes.icon_get())
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
     label.grid(row=0,column=2,columnspan=2)
     #label.pack(pady=10,padx=10)

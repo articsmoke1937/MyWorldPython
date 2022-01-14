@@ -38,8 +38,6 @@ class chuck_jokes(object):
         return r,c
 
     def icon_get():
-        chuck_base_url= "https://api.chucknorris.io/jokes/random"
         image_get=requests.get(chuck_base_url)
         image_set=image_get.json()
         image=image_set.get("icon_url")
-        return image
