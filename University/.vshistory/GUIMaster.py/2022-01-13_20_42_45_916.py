@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-import Programs.games as games_call
+## import Programs.games as game
 ## import University.games as games_play
 from tkinter import messagebox
 # from tkinter.ttk import *
@@ -314,24 +314,46 @@ class chuck_norris_jokes(Frame):
  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
-    label.grid(row=0,column=2,columnspan=2)
-    #label.pack(pady=10,padx=10)
-   
-    #Call to function to get joke menu categories
-    joke_menu=games_call.chuck_jokes.joke_menu_get()
+    label.pack(pady=10,padx=10)
+    
+    joke_menu_url = "https://api.chucknorris.io/jokes/categories"
+    chuck_icon_url= "https://assets.chucknorris.host/img/avatar/chuck-norris.png"
+    chuck_base_url= "https://api.chucknorris.io/jokes/random"
+    request=requests.get(joke_menu_url)
+    joke_menu=request.json()
+    request2=requests.get(chuck_icon_url)
+    ##chuck_icon=request2(chuck_icon_url)
+    pady=1
     button=[]
-    #Display buttons on screen for menu, when button is pressed, category is passed and joke displayed
     for x in range(len(joke_menu)):
-        button_show=Button(self, text=joke_menu[x], command = lambda btn_text=joke_menu[x]:[games_call.chuck_jokes.display_joke(controller,btn_text)
-                                                                                ,controller.show_frame(chuck_norris_jokes)])
-        button_show.grid(row=x+2,column=x+1)
-        print(x+5)
-        button.append(button_show)
+        btn_text=joke_menu[x]
+        pady=padx+1
+        ##b=Button(self, text=t, command = lambda x = x: boardWindow(x))
+        b=Button(self, text=btn_text, command = lambda:display_joke(self,btn_text))
+        b.pack(expand=False,pady=padx)
+        button.append(b)
+
     main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 10)
-    #main_menu_btn.pack()
+    command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+    main_menu_btn.pack()
     #button2.pack()
     #button3.pack()
+ 
+    def get_chuck_joke_single(self,controller):
+            chuck_joke_single=games_play.chuck_jokes.joke_single_get()
+            print(chuck_joke_single)
+
+    def get_chuck_menu(self,controller):
+            chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
+            print(chuck_joke_menu)
+
+    def display_joke(self,btn_text):
+            cat_url="%s?category=%s"%(chuck_base_url,btn_text)
+            get=requests.get(cat_url)
+            get_joke=get.json()
+            joke=get_joke.get("value")
+            messagebox.showinfo('Norrishment Time',f"Here is the Norris joke you requested:\n{joke}")
+            print(joke)
 
 
 #####################################################

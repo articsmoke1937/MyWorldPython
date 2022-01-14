@@ -8,7 +8,7 @@ from tkinter import *
 from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
-import Programs.games as games_call
+## import Programs.games as game
 ## import University.games as games_play
 from tkinter import messagebox
 # from tkinter.ttk import *
@@ -46,14 +46,14 @@ class start_program:
 
 ############################################
 # Page controller - this class will control
-# the layout of the pages 
+# the layout of the page
 # The method that is used to call the frames is housed here
 ############################################
 class page_view_controller(Tk):
- 
+
   def __init__(self,*args,**kwargs):
     Toplevel.__init__(self,*args,**kwargs)
-   
+
     # Window page template
     container=Frame(self)
     Toplevel.geometry(self,'500x500')
@@ -69,20 +69,20 @@ class page_view_controller(Tk):
     for F in (user_validation,user_search,user_set_up,start_page,games,chuck_norris_jokes,rocks_paper_scissors,stocks,regression,classification,sentiment_analysis,nat_lang_proc,ai_network):
         frame = F(container, self)
         self.frame[F] = frame
-        frame.grid(row = 0, column = 0, sticky = "nsew") 
-   
+        frame.grid(row = 0, column = 0, sticky = "nsew")
+
    # Determine initial first page display and set last user log in
     if user_in=='y':
         user_profile.user.set_last_user_log(user_id)
-        self.show_frame(user_validation) 
+        self.show_frame(user_validation)
 
     elif user_in=='n':
         self.show_frame(user_set_up)
-    
+
   # Function called to display a frame
   def show_frame(self, cont):
-    frame = self.frame[cont]  
-    frame.tkraise() 
+    frame = self.frame[cont]
+    frame.tkraise()
 
 
 
@@ -248,7 +248,7 @@ class start_page(Frame):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    button1 = Button(self, text = "GamesMain",
+    button1 = Button(self, text = "Games",
     command = lambda: controller.show_frame(games), width = 20, height = 1)   
     button2 = Button(self, text = "Stock Market",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
@@ -275,25 +275,58 @@ class start_page(Frame):
 #####################################################
 # GAMES
 #####################################################
-
-######################################################
-# Games Frame
-#####################################################
 class games(Frame):  
-  print("Greetings8!")
+
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    cn_btn = Button(self, text = "Chuck Norris Jokes",
-    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
-    rps_btn = Button(self, text = "Rocks Papers Scissors",
+    button1 = Button(self, text = "Games",
+    command = lambda: controller.show_frame(games), width = 20, height = 1)   
+    button2 = Button(self, text = "Stock Market",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
-    menu_return_btn = Button(self, text = "Back to Main Menu",
+    button3 = Button(self, text = "Regression Project",
+    command = lambda: controller.show_frame(regression), width = 20, height = 1)
+    button4 = Button(self, text = "Classification Project",
+    command = lambda: controller.show_frame(classification), width = 20, height = 1)
+    button5 = Button(self, text = "Sentiment Analysis",
+    command = lambda: controller.show_frame(sentiment_analysis), width = 20, height = 1)
+    button6 = Button(self, text = "Natural Language Processing",
+    command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
+    button7 = Button(self, text = "Artificial Neural Networks",
+    command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
+    button8 = Button(self, text = "Back to Main Menu",
     command = lambda: controller.show_frame(start_page), width = 20, height = 1)
-    cn_btn.pack()
-    rps_btn.pack()
-    menu_return_btn.pack()
+    button1.pack()
+    button2.pack()
+    button3.pack()
+    button4.pack()
+    button5.pack()
+    button6.pack()
+    button7.pack()
+    button8.pack()
+
+
+
+######################################################
+# Games Frame
+#####################################################
+class games_frame(Frame):
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent) 
+        label = Label(self, text="Welcome To My World of GAMES!", font = LargeFont)
+        label.pack(pady=10,padx=10)
+        button1 = Button(self, text = "Chuck Norris Jokes",
+        command = lambda:[self.get_chuck_joke_single(controller),self.get_chuck_menu(controller), controller.show_frame(chuck_norris_jokes)], width = 20, height = 1)   
+        button2 = Button(self, text = "Rocks Papers Scissors",
+        command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+        button3 = Button(self, text = "Return to Main Menu",
+        command = lambda: controller.show_frame(start_page), width = 20, height = 1)
+        button1.pack()
+        button2.pack()
+        button3.pack()
+
     #def get_chuck_joke_single(self,controller):
     #    chuck_joke_single=games_play.chuck_jokes.joke_single_get()
     #    print(chuck_joke_single)
@@ -309,31 +342,44 @@ class games(Frame):
 # Chuck Norris Jokes Frame
 #####################################################
 class chuck_norris_jokes(Frame):
- 
-   #Initialize frame.  I will call directly to the website from here istead of a separate class
- def __init__(self, parent, controller):
+  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
+
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
-    label.grid(row=0,column=2,columnspan=2)
-    #label.pack(pady=10,padx=10)
-   
-    #Call to function to get joke menu categories
-    joke_menu=games_call.chuck_jokes.joke_menu_get()
+    label.pack(pady=10,padx=10)
+    joke_menu_url = "https://api.chucknorris.io/jokes/categories"
+    request=requests.get(joke_menu_url)
+    joke_menu=request.json()
+    
     button=[]
-    #Display buttons on screen for menu, when button is pressed, category is passed and joke displayed
     for x in range(len(joke_menu)):
-        button_show=Button(self, text=joke_menu[x], command = lambda btn_text=joke_menu[x]:[games_call.chuck_jokes.display_joke(controller,btn_text)
-                                                                                ,controller.show_frame(chuck_norris_jokes)])
-        button_show.grid(row=x+2,column=x+1)
-        print(x+5)
-        button.append(button_show)
-    main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 10)
-    #main_menu_btn.pack()
-    #button2.pack()
-    #button3.pack()
+        t=joke_menu[x]
+        b=Button(self, text=t, comman = lambda x = x: boardWindow(x))
+        b.pack()
+        button.append(b)
+        #def action(button=x):
+        #    return button_dict[x)
+        #button_dict[x]=Button(self, text = x, command=action)
+        #button_dict[x].pack()
 
+    button1 = Button(self, text = "Click Here to hear some Chuck Norris Jokes",
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1) 
+    button2 = Button(self, text = " Stock Program ",
+    command = lambda: controller.show_frame(stocks), width = 20, height = 1)
+    button3 = Button(self, text = "Rocks Papers Scissors",
+    command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
+    button1.pack()
+    button2.pack()
+    button3.pack()
+ 
+    def get_chuck_joke_single(self,controller):
+            chuck_joke_single=games_play.chuck_jokes.joke_single_get()
+            print(chuck_joke_single)
 
+    
+    def get_chuck_menu(self,controller):
+            chuck_joke_menu=games_play.chuck_jokes.jokes_menu_get()
+            print(chuck_joke_menu)  
 #####################################################
 # STOCKS
 #####################################################
@@ -399,7 +445,8 @@ class regression(Frame):
     command = lambda: controller.show_frame(nat_lang_proc), width = 20, height = 1)
     button7 = Button(self, text = "Artificial Neural Networks",
     command = lambda: controller.show_frame(ai_network), width = 20, height = 1)
-
+    button8 = Button(self, text = "Back to Main Menu",
+    command = lambda: controller.show_frame(start_page), width = 20, height = 1)
     button1.pack()
     button2.pack()
     button3.pack()
@@ -407,7 +454,7 @@ class regression(Frame):
     button5.pack()
     button6.pack()
     button7.pack()
-    #button8.pack()
+    button8.pack()
 
 
 #####################################################

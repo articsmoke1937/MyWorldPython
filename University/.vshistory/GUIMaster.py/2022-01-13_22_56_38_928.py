@@ -314,7 +314,7 @@ class chuck_norris_jokes(Frame):
  def __init__(self, parent, controller):
     Frame.__init__(self, parent)
     label = Label(self, text="Welcome To The World\nOf The Almighty NORRIS!!!!", font = LargeFont)
-    label.grid(row=0,column=2,columnspan=2)
+    label.grid(row=0,column=1,columnspan=6)
     #label.pack(pady=10,padx=10)
    
     #Call to function to get joke menu categories
@@ -324,12 +324,11 @@ class chuck_norris_jokes(Frame):
     for x in range(len(joke_menu)):
         button_show=Button(self, text=joke_menu[x], command = lambda btn_text=joke_menu[x]:[games_call.chuck_jokes.display_joke(controller,btn_text)
                                                                                 ,controller.show_frame(chuck_norris_jokes)])
-        button_show.grid(row=x+2,column=x+1)
+        button_show.grid(row=x+5,columnspan=x+2-1)
         print(x+5)
         button.append(button_show)
     main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 10)
-    #main_menu_btn.pack()
+    command = lambda: controller.show_frame(start_page), width = 20, height = 10
     #button2.pack()
     #button3.pack()
 

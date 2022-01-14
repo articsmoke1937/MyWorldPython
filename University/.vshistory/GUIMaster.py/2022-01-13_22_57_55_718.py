@@ -324,7 +324,7 @@ class chuck_norris_jokes(Frame):
     for x in range(len(joke_menu)):
         button_show=Button(self, text=joke_menu[x], command = lambda btn_text=joke_menu[x]:[games_call.chuck_jokes.display_joke(controller,btn_text)
                                                                                 ,controller.show_frame(chuck_norris_jokes)])
-        button_show.grid(row=x+2,column=x+1)
+        button_show.grid(row=x+5,columnspan=x+2-1)
         print(x+5)
         button.append(button_show)
     main_menu_btn = Button(self, text = "Return to Main Menu",
