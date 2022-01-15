@@ -60,13 +60,13 @@ class rocks_paper_scissors(object):
         if computer_choice == user_choice:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so the game is a TIE')
         elif user_choice == 'rock' and computer_choice == 'scissors':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} LOSE')
  
     def rps_play_paper():
 
@@ -75,13 +75,13 @@ class rocks_paper_scissors(object):
         if computer_choice == user_choice:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so the game is a TIE')
         elif user_choice == 'rock' and computer_choice == 'scissors':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} LOSE')
  
     def rps_play_scissors():
 
@@ -90,11 +90,11 @@ class rocks_paper_scissors(object):
         if computer_choice == user_choice:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so the game is a TIE')
         elif user_choice == 'rock' and computer_choice == 'scissors':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} WIN')
         else:
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
+           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so {globals.pname} LOSE')
  

@@ -62,9 +62,9 @@ class rocks_paper_scissors(object):
         elif user_choice == 'rock' and computer_choice == 'scissors':
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',F'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
  
@@ -77,9 +77,9 @@ class rocks_paper_scissors(object):
         elif user_choice == 'rock' and computer_choice == 'scissors':
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',F'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
  
@@ -92,9 +92,9 @@ class rocks_paper_scissors(object):
         elif user_choice == 'rock' and computer_choice == 'scissors':
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'paper' and computer_choice == 'rock':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS',F'\nI chose {computer_choice} so YOU WIN')
         elif user_choice == 'scissors' and computer_choice == 'paper':
-           messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU WIN')
+           messagebox.showinfo('RPS','\nI chose {computer_choice} so YOU WIN')
         else:
            messagebox.showinfo('RPS',f'\nI chose {computer_choice} so YOU LOSE')
  

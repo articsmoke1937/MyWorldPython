@@ -429,17 +429,15 @@ class stock_profile(Frame):
     label.pack(pady=10,padx=10)
 
 
-    comp_info_btn = Button(self, text = "Company Information",command = lambda:[stocks_call.stock_information.comp_info_get(self)
+    comp_info_btn = Button(self, text = "Company Information",command = lambda:[stocks_call.stocks.stock_information.comp_info_get(self)
                                                                                 , controller.show_frame(stock_profile)], width = 20, height = 1)   
     mark_perf_btn = Button(self, text = "Market Performance", command = lambda: controller.show_frame(stocks), width = 20, height = 1)
-    new_stock_btn = Button(self, text = "Choose A New Stock",command = lambda: controller.show_frame(stock_profile_get), width = 20, height = 1)
     anal_btn = Button(self, text = "Analysis", command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
     cancel_btn = Button(self, text = "Return to Stocks Menu",   command = lambda: controller.show_frame(stocks), width = 20, height = 2)
     main_menu_btn = Button(self, text = "Return to Main Menu", command = lambda: controller.show_frame(start_page), width = 20, height = 2)
     
     comp_info_btn.pack()
     mark_perf_btn.pack()
-    new_stock_btn.pack()
     anal_btn.pack()
     cancel_btn.pack()
     main_menu_btn.pack()

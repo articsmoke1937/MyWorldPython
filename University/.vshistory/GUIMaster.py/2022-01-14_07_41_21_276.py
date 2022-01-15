@@ -9,7 +9,6 @@ from tkinter import ttk
 from University import user_profile as user_profile
 from University import globals as globals
 import Programs.games as games_call
-import Programs.stocks as stocks_call
 
 ## import University.games as games_play
 from tkinter import messagebox
@@ -68,7 +67,7 @@ class page_view_controller(Tk):
 
     # All windows that need to show will be defined here
 
-    for F in (user_validation,user_search,user_set_up,start_page,games,chuck_norris_jokes,rocks_paper_scissors,stocks,stock_profile,stock_profile_get,regression,classification,sentiment_analysis,nat_lang_proc,ai_network):
+    for F in (user_validation,user_search,user_set_up,start_page,games,chuck_norris_jokes,rocks_paper_scissors,stocks,regression,classification,sentiment_analysis,nat_lang_proc,ai_network):
         frame = F(container, self)
         self.frame[F] = frame
         frame.grid(row = 0, column = 0, sticky = "nsew") 
@@ -250,7 +249,7 @@ class start_page(Frame):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    button1 = Button(self, text = "Games",
+    button1 = Button(self, text = "GamesMain",
     command = lambda: controller.show_frame(games), width = 20, height = 1)   
     button2 = Button(self, text = "Stock Market",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
@@ -346,9 +345,9 @@ class rocks_paper_scissors(Frame):
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
     label = Label(self, text="Welcome Rocks, Paper, Scissors", font = LargeFont)
-    label.grid(pady=10,padx=10, column=3,columnspan=6)
+    label.grid(pady=10,padx=10, column=1,columnspan=6)
     label = Label(self, text="Please choose a weapon", font = MedFont)
-    label.grid(pady=10,padx=10, column=6)
+    label.grid(pady=10,padx=10, column=3)
 
     rock_btn= Button(self, text = "ROCK",
     command = lambda: games_call.rocks_paper_scissors.rps_play_rock(), width = 20, height = 1)   
@@ -366,11 +365,11 @@ class rocks_paper_scissors(Frame):
     main_menu_btn = Button(self, text = "Return to Main Menu",
     command = lambda: controller.show_frame(start_page), width = 20, height = 2)
     
-    rock_btn.grid(pady=10,padx=10, column=6,row=2)
-    paper_btn.grid(pady=10,padx=10, column=6,row=3)
-    scissors_btn.grid(pady=10,padx=10, column=6,row=4)
-    games_menu_btn.grid(pady=10,padx=10, column=5,row=9)
-    main_menu_btn.grid(pady=10,padx=10, column=7, row=9)
+    rock_btn.grid(pady=10,padx=10, column=3,row=2)
+    paper_btn.grid(pady=10,padx=10, column=3,row=3)
+    scissors_btn.grid(pady=10,padx=10, column=3,row=4)
+    games_menu_btn.grid(pady=10,padx=10, column=5,row=2)
+    main_menu_btn.grid(pady=10,padx=10, column=6, row=2)
 
 #####################################################
 # STOCKS
@@ -383,66 +382,18 @@ class stocks(Frame):
   print("Greetings8!")
   def __init__(self, parent, controller):
     Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome The Market", font = LargeFont)
+    label = Label(self, text="Welcome To My World", font = LargeFont)
     label.pack(pady=10,padx=10)
-    button1 = Button(self, text = "Single Stock Profile",
-    command = lambda: controller.show_frame(stock_profile_get), width = 20, height = 1)   
-    button2 = Button(self, text = " Stock Breakdown ",
+    button1 = Button(self, text = "Chuck Norris Jokes",
+    command = lambda: controller.show_frame(chuck_norris_jokes), width = 20, height = 1)   
+    button2 = Button(self, text = " Stock Program ",
     command = lambda: controller.show_frame(stocks), width = 20, height = 1)
-    button3 = Button(self, text = "Analysis",
+    button3 = Button(self, text = "Rocks Papers Scissors",
     command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
     button1.pack()
     button2.pack()
     button3.pack()
 
-    ##Splash screen to obtain the stock symbol from the user
-class stock_profile_get(Frame):  
-  print("Greetings8!")
-  def __init__(self, parent, controller):
-    Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome The Market", font = LargeFont)
-    label.pack(pady=10,padx=10)
-
-    #Entry for the user to enter stock symbol.
-    stock_to_profile_label= Label(self, text=f'Enter The Stock Symbol you would like to profile', font = SmallFont)
-    stock_to_profile_label.pack(pady=5,padx=5)
-    stock_to_profile_get= Entry(self)
-    stock_to_profile_get.pack(pady=5,padx=5)
-
-
-    submit_btn = Button(self, text = "Submit",
-    command = lambda:[stocks_call.stock_information.stock_choice_get(self,stock_to_profile_get), controller.show_frame(stock_profile)], width = 20, height = 1)   
-    cancel_btn = Button(self, text = "Cancel",
-    command = lambda: controller.show_frame(stocks), width = 20, height = 1)
-    main_menu_btn = Button(self, text = "Return to Main Menu",
-    command = lambda: controller.show_frame(start_page), width = 20, height = 2)
-    submit_btn.pack()
-    cancel_btn.pack()
-    main_menu_btn.pack()
-
-
-class stock_profile(Frame):  
-  print("Greetings8!")
-  def __init__(self, parent, controller):
-    Frame.__init__(self, parent) 
-    label = Label(self, text="Welcome The Market", font = LargeFont)
-    label.pack(pady=10,padx=10)
-
-
-    comp_info_btn = Button(self, text = "Company Information",command = lambda:[stocks_call.stock_information.comp_info_get(self)
-                                                                                , controller.show_frame(stock_profile)], width = 20, height = 1)   
-    mark_perf_btn = Button(self, text = "Market Performance", command = lambda: controller.show_frame(stocks), width = 20, height = 1)
-    new_stock_btn = Button(self, text = "Choose A New Stock",command = lambda: controller.show_frame(stock_profile_get), width = 20, height = 1)
-    anal_btn = Button(self, text = "Analysis", command = lambda: controller.show_frame(rocks_paper_scissors), width = 20, height = 1)
-    cancel_btn = Button(self, text = "Return to Stocks Menu",   command = lambda: controller.show_frame(stocks), width = 20, height = 2)
-    main_menu_btn = Button(self, text = "Return to Main Menu", command = lambda: controller.show_frame(start_page), width = 20, height = 2)
-    
-    comp_info_btn.pack()
-    mark_perf_btn.pack()
-    new_stock_btn.pack()
-    anal_btn.pack()
-    cancel_btn.pack()
-    main_menu_btn.pack()
 
 
 #####################################################
